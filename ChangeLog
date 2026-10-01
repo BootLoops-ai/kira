@@ -1,0 +1,23 @@
+
+For changes in Kira release versions see the release notes in doc/
+or the respective publication.
+
+Kira 1.0: http://inspirehep.net/record/1599858
+          https://arxiv.org/abs/1705.05610
+          doc/kira-1.0-publication (Latex source only)
+          https://gitlab.com/kira-pyred/kira/blob/master/doc/kira-1.0-publication (Latex source only)
+
+Kira 1.1: doc/releasenotes-1.1.rst
+          https://gitlab.com/kira-pyred/kira/blob/master/doc/releasenotes-1.1.rst
+
+Kira 1.2: https://arxiv.org/abs/1812.01491
+          doc/kira-1.2-releasenotes (Latex source only)
+          https://gitlab.com/kira-pyred/kira/blob/master/doc/kira-1.2-releasenotes (Latex source only)
+
+Kira 2.0: https://inspirehep.net/literature/1811816
+          https://arxiv.org/abs/2008.06494
+          doc/kira-2.0-publication (Latex source only)
+          https://gitlab.com/kira-pyred/kira/blob/master/doc/kira-2.0-publication (Latex source only)
+
+Kira 2.1 and newer: ChangeLog.md
+                    https://gitlab.com/kira-pyred/kira/-/blob/master/ChangeLog.md

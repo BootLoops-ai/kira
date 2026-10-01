@@ -1,0 +1,4 @@
+jobs:
+  - kira2math:
+     target:
+      - {sectors: [93], r: 6, s: 1, d: 0}

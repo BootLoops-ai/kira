@@ -1,0 +1,11 @@
+jobs:
+  - reduce_sectors:
+     reduce:
+       - {topologies: [F2], sectors: [181], r: 6, s: 2, d: 2}
+     select_integrals:
+       select_mandatory_recursively:
+        - {topologies: [F2], sectors: [181], r: 5, s: 2, d: 1}
+     run_symmetries: true
+     run_initiate: true
+     preferred_masters:	"basis"
+     run_firefly: true

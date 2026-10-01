@@ -1,0 +1,114 @@
+Summary of all job options. This file is work in progress.
+
+### reduce_sectors
+Initiates a reduction based on IBP identities.
+## reduce
+Sub option of the option 'reduce_sectors'.
+Control the size of the system of equations based on the following parameters:
+# topologies
+List all relevant topologies for the reduction.
+# sectors
+List all sectors in big-endian binary notation or in sector number notations.
+# r
+The sum of all positive indices.
+# s
+The sum of all negative indices.
+# d
+Sum of maximal number of dots (optional).
+
+
+### reduce_user_defined_system
+Reduce a system of equations defined in separate files or directories.
+## input_system
+Reads a system of equations from several files or directories.
+
+### select_integrals
+Select integrals relevant for the reduction.
+## select_mandatory_recursively
+Control the number of selected integrals based on the following parameters:
+# topologies
+List all relevant topologies for the reduction.
+# sectors
+List all sectors in big-endian binary notation or in sector number notations.
+# r
+The sum of all positive indices.
+# s
+The sum of all negative indices.
+# d
+Sum of maximal number of dots (optional).
+or
+## select_mandatory_list
+Choose a file containing all integrals to be reduced.
+
+### preferred_masters
+A file containing preferred master integrals or master equations.
+
+### integral_ordering
+Choose one of 8 different integral orderings.
+Default: 1
+
+### run_symmetries
+Kira generates the symmetry relations and gets the set of zero sectors.
+
+### run_initiate
+Kira generates the system of equations.
+
+### run_triangular
+Kira performs the forward elimination. This option accepts arguments true or sectorwise.
+
+### run_back_substitution
+Kira performs the back substitution.
+
+### run_firefly
+Performs the reduction with the help of FireFly:
+run_firefly: true, start the reduction after 'run_initiate' has finished (replaces 'run_triangular' and 'run_back_substitution').
+run_firefly: back, start the reduction after 'run_triangular' has finished (replaces 'run_back_substitution').
+
+### factor_scan
+Only available for 'run_firefly'.
+Determines and factors out univariate factors in the master integral coefficients before interpolating them (this can simplify the coefficients).
+Default: false for < 3 variables, true for >= 3 variables
+
+
+### iterative_reduction
+Performs the reduction of integrals masterwise or sectorwise, sequentially.
+This leads to improved main memory usage.
+
+### insert_prefactors
+Only available for 'run_firefly'.
+Imports a file with factors for master integral coefficients.
+First integral denotes an integral which is supposed to be reduced with coefficient 1.
+All other integrals are master integrals and contain coefficients, which are rational functions.
+Kira will use these coefficients to divide them out during 'run_firefly' and restore them in the final result.
+
+### alt_dir
+Kira saves the data in the 'results', 'tmp' and 'sectormappings' directory at a new user provided path location.
+Default: "."
+
+### data_file
+Write all integrals appearing in the reduction and the results to a human readable form.
+Default: false.
+
+### write_numerical_system
+Get the solved system of equations from pyRed numerically.
+
+### select_masters_reduction
+Make a choice which master integrals will not be set to zero.
+
+### generate_input
+Generates a system of equations and saves the files to the input_kira directory. The file format is valid for further reduction of this system of equations with the option 'input_system'. If the option 'weight_notation: true' is set, the generated system of equations is written in the seed notation. Else, it is written in the weight bit notation. If the option 'amplitude_translate' is used, Kira imports a file which contains integrals times the coefficients. Kira will treat the input as the right-hand-side of an equation. This right-hand-side is translated into the weight bit notation, while the left-hand-side of this equation gets assigned a big weight-bit number. This weight-bit number may be used in later reduction steps to reduce the left-hand-side of this equation.
+
+### conditional
+If the reduction terminates before it is finished, Kira will resume the reduction.
+Default: true
+
+### set_zero_sectors
+Make a choice which master integrals will not be set to zero. This modifies the 
+files 'nonTrivialSector' and 'trivialsector'. 
+
+### lorenz_invariance
+Disables/enables the Lorenz invariance identities.
+Default: true
+
+##algebraic_reconstruction
+'run_back_substitution' uses methods to interpolate coefficients documented in arXiv:1812.01491.

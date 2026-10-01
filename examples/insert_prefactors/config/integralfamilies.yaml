@@ -1,0 +1,16 @@
+integralfamilies:
+  - name: "doublebox"
+    loop_momenta: [l1, l2]
+    top_level_sectors: [255]
+    propagators:
+      - [ "l1", 0 ]             #1
+      - [ "l1-k1", 0 ]          #2
+      - [ "l1-k1-k2", 0 ]       #3
+      - [ "l2", 0 ]             #4
+      - [ "l2-k1-k2-k3", 0 ]    #5
+      - [ "l2-k1-k2-k3-k4", 0 ] #6
+      - [ "l1-l2", 0 ]          #7
+      - [ "l1-l2+k3", 0 ]       #8
+      - [ "l1-k1-k2-k3-k4", 0 ] #9
+      - [ "l2-k1", 0 ]          #10
+      - [ "l2-k1-k2", 0 ]       #11

@@ -1,0 +1,16 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {topologies: [topo7], sectors: [127], r: 7, s: 2, d: 0}
+    select_integrals:
+      select_mandatory_list:
+        - [integrals2reduce]
+    run_initiate: true
+    data_file: true
+    run_firefly: true
+    extra_relations: extraRelations
+    truncate_sp: 
+      - {topologies: [topo7], l: 5}
+ - kira2math:
+    target:
+     - [integrals2reduce]

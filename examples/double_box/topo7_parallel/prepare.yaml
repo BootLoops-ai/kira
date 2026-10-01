@@ -1,0 +1,10 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [topo7], r: 7, s: 2}
+    select_integrals:
+     select_mandatory_recursively:
+      - {topologies: [topo7], r: 7, s: 2, d: 0}
+    run_initiate: true
+    run_triangular: true
+    # run_back_substitution will be done by parallel1.yaml and parallel2.yaml

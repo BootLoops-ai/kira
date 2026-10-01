@@ -1,0 +1,15 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {topologies: [doublePentagon], sectors: [255], r: 8, s: 5, d: 0}
+      - {topologies: [doublePentagon], sectors: [167], r: 8, s: 3, d: 0}
+      - {topologies: [doublePentagon], sectors: [103], r: 8, s: 3, d: 0}
+      - {topologies: [doublePentagon], sectors: [199], r: 8, s: 3, d: 0}
+      - {topologies: [doublePentagon], sectors: [71], r: 8, s: 2, d: 0}
+    select_integrals:
+      select_mandatory_list:
+        - [integrals-8.5.0]
+    run_initiate: true
+    run_firefly: true
+    truncate_sp: 
+      - {l: 4}

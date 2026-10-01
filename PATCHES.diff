@@ -1,0 +1,196 @@
+diff --git a/src/kira/dataBase.cpp b/src/kira/dataBase.cpp
+--- a/src/kira/dataBase.cpp
++++ b/src/kira/dataBase.cpp
+@@ -1,5 +1,6 @@
+ /*
+ Copyright (C) 2017-2025 The Kira Developers (see AUTHORS file)
++Modified 2026 for BootLoops by Matthew D. Schwartz; distributed under the GNU GPL v3 or later, see COPYING. The changes are described in PATCHES.md.
+ 
+ This file is part of Kira.
+ 
+@@ -461,6 +462,13 @@
+ }
+ 
+ void DataBase::begin_transaction() {
++  // Several call sites issue begin/commit in tight loops; if a previous
++  // BEGIN is still open (e.g. an inner step returned SQLITE_OK but the
++  // outer loop re-enters), a second BEGIN would error.  Only open a new
++  // transaction when SQLite reports autocommit (i.e. no txn active).
++  if (!sqlite3_get_autocommit(db)) {
++    return;
++  }
+   string sql = "BEGIN TRANSACTION";
+   rc = sqlite3_exec(db, sql.c_str(), NULL, NULL, &errorMessage);
+ 
+@@ -474,16 +482,26 @@
+ }
+ 
+ void DataBase::commit_transaction() {
+-  string sql = "COMMIT TRANSACTION";
+-  rc = sqlite3_exec(db, sql.c_str(), NULL, NULL, &errorMessage);
+-
+-  if (rc != SQLITE_OK) {
+-    fprintf(stderr, "SQL error: %s\n", errorMessage);
+-    sqlite3_free(errorMessage);
++  // Guard the COMMIT with the connection's actual transaction state.
++  // sqlite3_get_autocommit() == 1 means no explicit transaction is open,
++  // so a COMMIT here would emit "cannot commit - no transaction is
++  // active" (printed on essentially every commit during long reductions
++  // when an intermediate sqlite3_step() has already auto-rolled-back on
++  // an error).  In that case we have nothing to commit and should only
++  // finalize the prepared statement.  Non-fatal but pure log noise; the
++  // guard makes the call idempotent.
++  if (!sqlite3_get_autocommit(db)) {
++    string sql = "COMMIT TRANSACTION";
++    rc = sqlite3_exec(db, sql.c_str(), NULL, NULL, &errorMessage);
++
++    if (rc != SQLITE_OK) {
++      fprintf(stderr, "SQL error: %s\n", errorMessage);
++      sqlite3_free(errorMessage);
++    }
++    //   else{
++    //     logger<< message;
++    //   }
+   }
+-  //   else{
+-  //     logger<< message;
+-  //   }
+ 
+   sqlite3_finalize(stmt);
+ }
+diff --git a/src/kira/kira.cpp b/src/kira/kira.cpp
+--- a/src/kira/kira.cpp
++++ b/src/kira/kira.cpp
+@@ -1,5 +1,6 @@
+ /*
+ Copyright (C) 2017-2025 The Kira Developers (see AUTHORS file)
++Modified 2026 for BootLoops by Matthew D. Schwartz; distributed under the GNU GPL v3 or later, see COPYING. The changes are described in PATCHES.md.
+ 
+ This file is part of Kira.
+ 
+@@ -783,7 +784,18 @@
+ };
+ 
+ Fermat* Kira::fermat;
++int Kira::s_coreNumber = 1;
+ std::string Kira::treatcoeff2(const std::string& str_) {
++  // parallel-treatcoeff: use one Fermat instance PER pyred worker thread
++  // instead of serializing all coefficient normalization on fermat[0].
++  // The Fermat pool (size s_coreNumber == coreNumber) is already spawned by
++  // initiate_fermat(); each worker takes a fixed slot on first call. The
++  // pyred RetrieveParallelMaster wrapper is patched to compute OUTSIDE the
++  // cache lock, so this must be thread-safe by itself.
++  static std::atomic<int> s_ctr{0};
++  static thread_local int tid = -1;
++  if (tid < 0) tid = (s_ctr++) % (s_coreNumber > 0 ? s_coreNumber : 1);
++
+   string str = str_;
+   size_t found;
+ 
+@@ -795,11 +807,11 @@
+     str.erase(str.begin() + found + 1, str.begin() + found + 2);
+   }
+ 
+-  fermat[0].fermat_collect(const_cast<char*>(str.c_str()));
++  fermat[tid].fermat_collect(const_cast<char*>(str.c_str()));
+ 
+-  fermat[0].fermat_calc();
++  fermat[tid].fermat_calc();
+ 
+-  return fermat[0].g_baseout;
++  return fermat[tid].g_baseout;
+ }
+ 
+ 
+diff --git a/src/kira/kira.h b/src/kira/kira.h
+--- a/src/kira/kira.h
++++ b/src/kira/kira.h
+@@ -1,5 +1,6 @@
+ /*
+ Copyright (C) 2017-2025 The Kira Developers (see AUTHORS file)
++Modified 2026 for BootLoops by Matthew D. Schwartz; distributed under the GNU GPL v3 or later, see COPYING. The changes are described in PATCHES.md.
+ 
+ This file is part of Kira.
+ 
+@@ -417,6 +418,8 @@
+ 
+   void write_amplitude_file(pyred::Weight generateID, std::vector<std::tuple<std::string, std::vector<int>, std::string, int> >&, std::string& amplitudeFile, int weightFlag);
+ 
++public:
++  static int s_coreNumber; // parallel-treatcoeff: pool size for per-thread fermat[tid]
+ private:
+   std::string kiraMode;
+   static Fermat* fermat;
+diff --git a/src/kira/reduction.cpp b/src/kira/reduction.cpp
+--- a/src/kira/reduction.cpp
++++ b/src/kira/reduction.cpp
+@@ -1,5 +1,6 @@
+ /*
+ Copyright (C) 2017-2025 The Kira Developers (see AUTHORS file)
++Modified 2026 for BootLoops by Matthew D. Schwartz; distributed under the GNU GPL v3 or later, see COPYING. The changes are described in PATCHES.md.
+ 
+ This file is part of Kira.
+ 
+@@ -1139,6 +1140,7 @@
+     }
+ 
+     fermat = new Fermat[coreNumber];
++    Kira::s_coreNumber = coreNumber; // parallel-treatcoeff: expose pool size to static treatcoeff2
+     for (int i = 0; i < coreNumber; i++) {
+       fermat[i].start_fermat(fermatPath, var);
+       idFermats.push(i);
+@@ -1149,8 +1151,12 @@
+        var[0] = '\0';
+         snprintf(var, sizeof(var), "%s", get<0>(it).c_str());
+         logger << "set: " << var << " = " << get<1>(it) << "\n";
+-        fermat[0].unset_variable(var);
+-        fermat[0].set_numeric2(var, get<1>(it));
++        // parallel-treatcoeff: apply --set_value to EVERY pool instance, not
++        // just [0], since treatcoeff2 now dispatches to fermat[tid].
++        for (int i = 0; i < coreNumber; i++) {
++          fermat[i].unset_variable(var);
++          fermat[i].set_numeric2(var, get<1>(it));
++        }
+       }
+     }
+     pthread_mutex_init(&mPreserveFermat, NULL);
+diff --git a/src/pyred/relations.h b/src/pyred/relations.h
+--- a/src/pyred/relations.h
++++ b/src/pyred/relations.h
+@@ -1,5 +1,6 @@
+ /*
+ Copyright (C) 2017-2025 The Kira Developers (see AUTHORS file)
++Modified 2026 for BootLoops by Matthew D. Schwartz; distributed under the GNU GPL v3 or later, see COPYING. The changes are described in PATCHES.md.
+ 
+ This file is part of pyRed.
+ 
+@@ -1238,13 +1239,24 @@
+   if (!m_treatcoeff) {
+     return [](const Coeff &, const std::string &s) { return s; };
+   }
++  // parallel-treatcoeff: m_treatcoeff (Kira::treatcoeff2) is now thread-safe
++  // (per-thread Fermat): probe the cache under the mutex, compute OUTSIDE it,
++  // insert-or-return-existing under the mutex; a hit holds the lock only for
++  // a map lookup, not a Fermat round-trip. MISSes may compute the same coeff
++  // in >1 thread but produce identical output (Fermat canonicalization is
++  // deterministic), so the wasted work is bounded by n_threads per unique coeff.
+   return [this](const Coeff &c, const std::string &s) {
+-    std::lock_guard<std::mutex> lk(s_treatcoeff_mtx);
+-    auto ins = s_treatcoeff_cache.insert({c, s});
+-    if (ins.second) {
+-      ins.first->second = m_treatcoeff(s);
++    {
++      std::lock_guard<std::mutex> lk(s_treatcoeff_mtx);
++      auto it = s_treatcoeff_cache.find(c);
++      if (it != s_treatcoeff_cache.end()) return it->second;
++    }
++    auto v = m_treatcoeff(s);
++    {
++      std::lock_guard<std::mutex> lk(s_treatcoeff_mtx);
++      auto ins = s_treatcoeff_cache.emplace(c, std::move(v));
++      return ins.first->second;
+     }
+-    return ins.first->second;
+   };
+ }
+ 

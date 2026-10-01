@@ -1,0 +1,12 @@
+jobs:
+  - reduce_sectors:
+     reduce:
+      # generate equations up to sector 127
+      - {sectors: [127], r: 7, s: 1, d: 1}
+     select_integrals:
+      select_mandatory_recursively:
+       # but select integrals only up to sector 93
+       - {sectors: [93], r: 6, s: 1, d: 0}
+     run_initiate: true
+     run_triangular: true
+     run_back_substitution: true

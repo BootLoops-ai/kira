@@ -1,0 +1,23 @@
+kinematics:
+  incoming_momenta: []
+  outgoing_momenta: [k1, k2, k3, k4, k5]
+  momentum_conservation: [k5,-k1-k2-k3-k4]
+  kinematic_invariants:
+    - [s12,  2]
+    - [s23,  2]
+    - [s34,  2]
+    - [s15,  2]
+    - [s45,  2]
+  scalarproduct_rules:
+    - [[k1,k1],  0]
+    - [[k2,k2],  0]
+    - [[k3,k3],  0]
+    - [[k4,k4],  0]
+    - [[k5,k5],  0]
+    - [[k1+k2,k1+k2],  "s12"]
+    - [[k1+k3,k1+k3],  "s45-s12-s23"]
+    - [[k1+k4,k1+k4],  "s23-s15-s45"]
+    - [[k2+k3,k2+k3],  "s23"]
+    - [[k2+k4,k2+k4],  "s15-s23-s34"]
+    - [[k3+k4,k3+k4],  "s34"]
+  symbol_to_replace_by_one: s12

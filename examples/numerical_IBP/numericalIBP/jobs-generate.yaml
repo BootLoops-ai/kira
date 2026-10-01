@@ -1,0 +1,17 @@
+# Minimal job file example.
+# Note that we recommend to always use the option select_integrals.
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {sectors: [1007], r: 10, s: 5, d: 1}
+    select_integrals:
+     select_mandatory_list:
+      - [johannHB]
+    run_initiate: true
+    numerical_points: numerics
+# can also specify the number of points for the output files
+#    numerical_points: {file: "numerics", points_per_output_file: 1}
+    extra_relations: input_kira_4D/hbP/SYSTEM_hbP_0000001008.kira
+    truncate_sp:
+     - {l: 4}
+    symbols_2_nums: false

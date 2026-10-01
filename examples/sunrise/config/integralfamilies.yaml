@@ -1,0 +1,11 @@
+integralfamilies:
+  - name: "sunrise"
+    loop_momenta: [k1, k2]
+    top_level_sectors: [7]
+#    cut_propagators: [1,2]
+    propagators:
+      - [ "k1",       "m2" ]
+      - [ "k2",       "m2" ]
+      - [ "p1-k1-k2", "m2" ]
+      - [ "p1-k2",    "m2" ]
+      - [ "p1-k1",    "m2" ]

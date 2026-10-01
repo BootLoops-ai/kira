@@ -1,0 +1,48 @@
+
+\newcommand*{\topoD}{
+  \begin{picture}(280,90)(0,0)
+    \Line[arrow](0,70)(60,70)\Text(30,72)[b]{$p_1^2=0$}\Vertex(60,70){2}
+    \Line[arrow](60,70)(140,70)\Text(100,73)[b]{$p_1-k_1$}\Vertex(140,70){2}
+    \Line[arrow](140,70)(220,70)\Text(180,73)[b]{$p_1-k_1+k_2$}\Vertex(220,70){2}
+    \Line[arrow](220,70)(280,70)\Text(250,72)[b]{$q_2^2=0$}
+    \Line[arrow](280,0)(220,0)\Text(250,-3)[t]{$p_2^2=0$}
+    \Line[arrow](140,0)(220,0)\Text(180,-5)[t]{$k_2-p_2$}\Vertex(220,0){2}
+    \Line[arrow,double,arrowwidth=2](140,0)(60,0)\Text(100,-5)[t]{$q_1-k_1$}\Text(102,3)[b]{$m_1$}\Vertex(140,0){2}
+    \Line[arrow,double,arrowwidth=2](60,0)(0,0)\Text(30,-3)[t]{$q_1^2=m_1^2$}\Vertex(60,0){2}
+    \Line[arrow](60,70)(60,0)\Text(64,34)[l]{$k_1$}
+    \Line[arrow,arrowpos=0.3,double,arrowwidth=2](220,70)(140,0)\Text(206,50)[l]{$p_1-q_2-k_1+k_2$}\Text(155,20)[r]{$m_2$}
+    \Line[arrow,arrowpos=0.3](220,0)(140,70)\Text(206,20)[l]{$k_2$}
+  \end{picture}
+}
+
+\newcommand*{\topoE}{
+  \begin{picture}(280,90)(0,0)
+    \Line[arrow](0,70)(60,70)\Text(30,72)[b]{$p_2^2=0$}\Vertex(60,70){2}
+    \Line[arrow,arrow,double,arrowwidth=2](60,70)(140,70)\Text(100,73)[b]{$k_1-k_2+q_1$}\Text(102,65)[t]{$m_1$}\Vertex(140,70){2}
+    \Line[arrow,arrow,double,arrowwidth=2](140,70)(220,70)\Text(180,73)[b]{$k_1+q_1$}\Text(182,65)[t]{$m_1$}\Vertex(220,70){2}
+    \Line[arrow,arrow,double,arrowwidth=2](220,70)(280,70)\Text(250,72)[b]{$q_1^2=m_1^2$}
+    \Line[arrow](0,0)(60,0)\Text(30,-3)[t]{$p_1^2=0$}\Vertex(60,0){2}
+    \Line[arrow](60,0)(140,0)\Text(100,-5)[t]{$p_1-k_2$}\Vertex(140,0){2}
+    \Line[arrow](140,0)(220,0)\Text(180,-5)[t]{$q_2-k_1$}\Vertex(220,0){2}
+    \Line[arrow](220,0)(280,0)\Text(250,-3)[t]{$q_2^2=0$}
+    \Line[arrow](220,70)(220,0)\Text(224,34)[l]{$k_1$}
+    \Line[arrow,arrowpos=0.3](60,0)(140,70)\Text(74,20)[r]{$k_2$}
+    \Line[arrow,arrowpos=0.7,double,arrowwidth=2](140,0)(60,70)\Text(74,50)[r]{$k_1-k_2+q_1-p_2$}\Text(140,20)[t]{$m_2$}
+  \end{picture}
+}
+
+\newcommand*{\topoGm}{
+  \begin{picture}(280,90)(0,0)
+    \Line[arrow,double,arrowwidth=2](0,70)(60,70)\Text(30,72)[b]{$q_1^2=m_1^2$}\Vertex(60,70){2}
+    \Line[arrow](140,70)(60,70)\Text(100,73)[b]{$-k_1+p_1+p_2$}\Vertex(140,70){2}
+    \Line[arrow](140,70)(220,70)\Text(180,73)[b]{$k_2-p_1-p_2$}\Vertex(220,70){2}
+    \Line[arrow](280,70)(220,70)\Text(250,72)[b]{$p_1^2=0$}
+    \Line[arrow](0,0)(60,0)\Text(30,-3)[t]{$q_2^2=0$}\Vertex(60,0){2}
+    \Line[arrow](60,0)(140,0)\Text(100,-5)[t]{$-k_1$}\Vertex(140,0){2}
+    \Line[arrow](220,0)(140,0)\Text(180,-5)[t]{$k_2$}\Vertex(220,0){2}
+    \Line[arrow](280,0)(220,0)\Text(250,-3)[t]{$p_2^2=0$}
+    \Line[arrow,double,arrowwidth=2](60,0)(60,70)\Text(65,34)[l]{$k_1+q_2$}\Text(57,34)[r]{$m_2$}
+    \Line[arrow](140,0)(140,70)\Text(145,34)[l]{$-k_1+k_2$}
+    \Line[arrow](220,70)(220,0)\Text(225,34)[l]{$k_2-p_2$}
+  \end{picture}
+}

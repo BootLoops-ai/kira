@@ -1,0 +1,20 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {sectors: [1023], r: 10, s: 6, d: 0}
+      - {sectors: [951], r: 9, s: 4, d: 1}
+      - {sectors: [861], r: 8, s: 3, d: 1}
+      - {sectors: [766], r: 9, s: 4, d: 1}
+      - {sectors: [765], r: 9, s: 4, d: 1}
+      - {sectors: [759], r: 9, s: 4, d: 1}
+      - {sectors: [703], r: 9, s: 4, d: 1}
+      - {sectors: [510], r: 9, s: 4, d: 1}
+      - {sectors: [507], r: 9, s: 4, d: 1}
+      - {sectors: [503], r: 9, s: 4, d: 1}
+    select_integrals:
+      select_mandatory_list:
+        - [integrals]
+    run_initiate: true
+    run_firefly: true
+    truncate_sp: 
+      - {l: 4}

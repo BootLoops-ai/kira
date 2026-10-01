@@ -1,0 +1,16 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {topologies: [topo7], sectors: [126], r: 7, s: 2, d: 1}
+    select_integrals:
+      select_mandatory_list:
+        - [toReduce_lowering]
+    run_initiate: true
+    run_firefly: true
+    preferred_masters: masters_lowering
+    integral_ordering: 2
+    truncate_sp: 
+      - {topologies: [topo7], l: 4}
+ - kira2math:
+    target:
+     - [toReduce_lowering]

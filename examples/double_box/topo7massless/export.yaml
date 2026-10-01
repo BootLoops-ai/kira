@@ -1,0 +1,5 @@
+jobs:
+ - kira2math:
+    target:
+     - {sectors: [127], r: 7, s: 2, d: 1}
+#    reconstruct_mass: true

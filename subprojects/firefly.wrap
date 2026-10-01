@@ -1,0 +1,5 @@
+[wrap-git]
+
+directory = firefly
+url = https://gitlab.com/firefly-library/firefly.git
+revision = kira-2

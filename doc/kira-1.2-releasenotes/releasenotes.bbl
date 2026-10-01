@@ -1,0 +1,137 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{Maierhoefer:2017hyi}
+P.~Maierhöfer, J.~Usovitsch and P.~Uwer, \emph{{Kira—A Feynman integral
+  reduction program}},
+  \href{http://dx.doi.org/10.1016/j.cpc.2018.04.012}{\emph{Comput. Phys.
+  Commun.} {\bf 230} (2018) 99--112},
+  [\href{http://arxiv.org/abs/1705.05610}{{\tt 1705.05610}}].
+
+\bibitem{Laporta:2001dd}
+S.~Laporta, \emph{{High precision calculation of multiloop Feynman integrals by
+  difference equations}},
+  \href{http://dx.doi.org/10.1016/S0217-751X(00)00215-7}{\emph{Int.J.Mod.Phys.}
+  {\bf A15} (2000) 5087--5159},
+  [\href{http://arxiv.org/abs/hep-ph/0102033}{{\tt hep-ph/0102033}}].
+
+\bibitem{Chetyrkin:1981qh}
+K.~G. Chetyrkin and F.~V. Tkachov, \emph{{Integration by Parts: The Algorithm
+  to Calculate beta Functions in 4 Loops}},
+  \href{http://dx.doi.org/10.1016/0550-3213(81)90199-1}{\emph{Nucl. Phys.} {\bf
+  B192} (1981) 159--204}.
+
+\bibitem{Gehrmann:1999as}
+T.~Gehrmann and E.~Remiddi, \emph{{Differential equations for two loop four
+  point functions}},
+  \href{http://dx.doi.org/10.1016/S0550-3213(00)00223-6}{\emph{Nucl. Phys.}
+  {\bf B580} (2000) 485--518}, [\href{http://arxiv.org/abs/hep-ph/9912329}{{\tt
+  hep-ph/9912329}}].
+
+\bibitem{Smirnov:2005ky}
+A.~V. Smirnov and V.~A. Smirnov, \emph{{Applying Grobner bases to solve
+  reduction problems for Feynman integrals}},
+  \href{http://dx.doi.org/10.1088/1126-6708/2006/01/001}{\emph{JHEP} {\bf 01}
+  (2006) 001}, [\href{http://arxiv.org/abs/hep-lat/0509187}{{\tt
+  hep-lat/0509187}}].
+
+\bibitem{Lee:2013mka}
+R.~N. Lee, \emph{{LiteRed 1.4: a powerful tool for reduction of multiloop
+  integrals}}, \href{http://dx.doi.org/10.1088/1742-6596/523/1/012059}{\emph{J.
+  Phys. Conf. Ser.} {\bf 523} (2014) 012059},
+  [\href{http://arxiv.org/abs/1310.1145}{{\tt 1310.1145}}].
+
+\bibitem{Larsen:2015ped}
+K.~J. Larsen and Y.~Zhang, \emph{{Integration-by-parts reductions from
+  unitarity cuts and algebraic geometry}},
+  \href{http://dx.doi.org/10.1103/PhysRevD.93.041701}{\emph{Phys. Rev.} {\bf
+  D93} (2016) 041701}, [\href{http://arxiv.org/abs/1511.01071}{{\tt
+  1511.01071}}].
+
+\bibitem{Kosower:2018obg}
+D.~A. Kosower, \emph{{Direct Solution of Integration-by-Parts Systems}},
+  \href{http://dx.doi.org/10.1103/PhysRevD.98.025008}{\emph{Phys. Rev.} {\bf
+  D98} (2018) 025008}, [\href{http://arxiv.org/abs/1804.00131}{{\tt
+  1804.00131}}].
+
+\bibitem{Anastasiou:2004vj}
+C.~Anastasiou and A.~Lazopoulos, \emph{{Automatic integral reduction for higher
+  order perturbative calculations}},
+  \href{http://dx.doi.org/10.1088/1126-6708/2004/07/046}{\emph{JHEP} {\bf 07}
+  (2004) 046}, [\href{http://arxiv.org/abs/hep-ph/0404258}{{\tt
+  hep-ph/0404258}}].
+
+\bibitem{vonManteuffel:2012np}
+A.~von Manteuffel and C.~Studerus, \emph{{Reduze 2 - Distributed Feynman
+  Integral Reduction}},  \href{http://arxiv.org/abs/1201.4330}{{\tt
+  1201.4330}}.
+
+\bibitem{Smirnov:2014hma}
+A.~V. Smirnov, \emph{{FIRE5: a C++ implementation of Feynman Integral
+  REduction}}, \href{http://dx.doi.org/10.1016/j.cpc.2014.11.024}{\emph{Comput.
+  Phys. Commun.} {\bf 189} (2015) 182--191},
+  [\href{http://arxiv.org/abs/1408.2372}{{\tt 1408.2372}}].
+
+\bibitem{Meson}
+J.~Pakkanen, \emph{{The Meson Build System}},
+  \href{http://arxiv.org/abs/https://mesonbuild.com}{{\tt
+  https://mesonbuild.com}}.
+
+\bibitem{Bauer:2000cp}
+C.~W. Bauer, A.~Frink and R.~Kreckel, \emph{{Introduction to the GiNaC
+  framework for symbolic computation within the C++ programming language}},
+  {\emph{J. Symb. Comput.} {\bf 33} (2000) 1},
+  [\href{http://arxiv.org/abs/cs/0004015}{{\tt cs/0004015}}].
+
+\bibitem{Vollinga:2005pk}
+J.~Vollinga, \emph{{GiNaC: Symbolic computation with C++}},
+  \href{http://dx.doi.org/10.1016/j.nima.2005.11.155}{\emph{Nucl. Instrum.
+  Meth.} {\bf A559} (2006) 282--284},
+  [\href{http://arxiv.org/abs/hep-ph/0510057}{{\tt hep-ph/0510057}}].
+
+\bibitem{CLN}
+B.~Haible and R.~B. Kreckel, \emph{{CLN - Class Library for Numbers, version
+  1.3.4}},  \href{http://arxiv.org/abs/http://www.ginac.de/CLN}{{\tt
+  http://www.ginac.de/CLN}}.
+
+\bibitem{YAMLCPP}
+\emph{{yaml-cpp}},
+  \href{http://arxiv.org/abs/https://github.com/jbeder/yaml-cpp}{{\tt
+  https://github.com/jbeder/yaml-cpp}}.
+
+\bibitem{ZLIB}
+J.-L. Gailly and M.~Adler, \emph{{ZLIB}},
+  \href{http://arxiv.org/abs/http://zlib.net}{{\tt http://zlib.net}}.
+
+\bibitem{Fermat}
+R.~H. Lewis, \emph{{Computer Algebra System Fermat}},
+  \href{http://arxiv.org/abs/http://www.bway.net/lewis}{{\tt
+  http://www.bway.net/lewis}}.
+
+\bibitem{Boehm:2017wjc}
+J.~Böhm, A.~Georgoudis, K.~J. Larsen, M.~Schulze and Y.~Zhang, \emph{{Complete
+  sets of logarithmic vector fields for integration-by-parts identities of
+  Feynman integrals}},
+  \href{http://dx.doi.org/10.1103/PhysRevD.98.025023}{\emph{Phys. Rev.} {\bf
+  D98} (2018) 025023}, [\href{http://arxiv.org/abs/1712.09737}{{\tt
+  1712.09737}}].
+
+\bibitem{Boehm:2018fpv}
+J.~Böhm, A.~Georgoudis, K.~J. Larsen, H.~Schönemann and Y.~Zhang,
+  \emph{{Complete integration-by-parts reductions of the non-planar hexagon-box
+  via module intersections}},
+  \href{http://dx.doi.org/10.1007/JHEP09(2018)024}{\emph{JHEP} {\bf 09} (2018)
+  024}, [\href{http://arxiv.org/abs/1805.01873}{{\tt 1805.01873}}].
+
+\bibitem{Harlander:2018zpi}
+R.~V. Harlander, Y.~Kluth and F.~Lange, \emph{{The two-loop energy–momentum
+  tensor within the gradient-flow formalism}},
+  \href{http://dx.doi.org/10.1140/epjc/s10052-018-6415-7}{\emph{Eur. Phys. J.}
+  {\bf C78} (2018) 944}, [\href{http://arxiv.org/abs/1808.09837}{{\tt
+  1808.09837}}].
+
+\bibitem{Chawdhry:2018awn}
+H.~A. Chawdhry, M.~A. Lim and A.~Mitov, \emph{{Two-loop five-point massless QCD
+  amplitudes within the IBP approach}},
+  \href{http://arxiv.org/abs/1805.09182}{{\tt 1805.09182}}.
+
+\end{thebibliography}\endgroup

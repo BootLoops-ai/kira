@@ -1,0 +1,11 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [box], sectors: [15], r: 6, s: 2, d: 2}
+    select_integrals:
+     select_mandatory_recursively:
+      - {topologies: [box], sectors: [15], r: 6, s: 2, d: 2}
+    preferred_masters: master_equations
+ - kira2math:
+    target:
+     - {sectors: [15], r: 6, s: 2, d: 2}

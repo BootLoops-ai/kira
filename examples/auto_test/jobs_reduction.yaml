@@ -1,0 +1,14 @@
+jobs:
+ - reduce_sectors:
+#    reduce:
+#      - {topo7, r: 0, s: 0}
+    select_integrals:
+      select_mandatory_list:
+       - [topo7, integrals]
+    reduce_automatic: true
+    run_initiate: true
+    run_triangular: true
+    run_back_substitution: true
+ - kira2math:
+    target:
+     - [topo7, integrals]

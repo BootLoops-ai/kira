@@ -1,0 +1,8 @@
+kinematics:
+ incoming_momenta: [q]
+ kinematic_invariants:
+  - [mt2, 2]
+  - [sqrq, 2]
+ scalarproduct_rules:
+  - [[q,q], sqrq]
+ symbol_to_replace_by_one: sqrq

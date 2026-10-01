@@ -1,0 +1,18 @@
+integralfamilies:
+  - name: "doublePentagon"
+    loop_momenta: [l1, l2]
+    top_level_sectors: [255]
+    permutation_option: 1
+    propagators:
+      - [ "l1", 0 ]             #1
+      - [ "l1+p1", 0 ]          #2
+      - [ "l1+p1+p2", 0 ]       #3
+      - [ "l2", 0 ]             #4
+      - [ "l2+p3", 0 ]    #5
+      - [ "l1+l2+p1+p2+p3", 0 ]       #8
+      - [ "l1+l2-p4", 0 ]          #7
+      - [ "l1+l2", 0 ] #6
+      - [ "l2+p1", 0 ]       #9
+      - [ "l2+p2", 0 ] #10     
+      - [ "l2+p4", 0 ]          #11
+

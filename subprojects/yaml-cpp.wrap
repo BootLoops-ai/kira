@@ -1,0 +1,11 @@
+[wrap-file]
+
+directory = yaml-cpp-yaml-cpp-0.7.0
+
+source_url = https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.7.0.tar.gz
+source_filename = yaml-cpp-yaml-cpp-0.7.0.tar.gz
+source_hash = 43e6a9fcb146ad871515f0d0873947e5d497a1c9c60c58cb102a97b47208b7c3
+
+patch_url = https://kira.hepforge.org/downloads?f=mesonpatches/mesonpatch-yaml-cpp-0.7.0.tar.gz
+patch_filename = mesonpatch-yaml-cpp-0.7.0.tar.gz
+patch_hash = 10f015b1fc0b230d25f3a3b9cd8cf5cd0fcdbc34dce91c1ec6d19e7b33149767

@@ -1,0 +1,44 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {sectors: [1023], r: 10, s: 3, d: 0}
+      - {sectors: [1005], r: 9, s: 1, d: 1}
+      - {sectors: [958], r: 9, s: 1, d: 1}
+      - {sectors: [955], r: 9, s: 1, d: 1}
+      - {sectors: [951], r: 9, s: 1, d: 1}
+      - {sectors: [878], r: 8, s: 1, d: 1}
+      - {sectors: [861], r: 8, s: 1, d: 1}
+      - {sectors: [766], r: 9, s: 1, d: 1}
+      - {sectors: [765], r: 9, s: 1, d: 1}
+      - {sectors: [759], r: 9, s: 1, d: 1}
+      - {sectors: [703], r: 9, s: 1, d: 1}
+      - {sectors: [510], r: 9, s: 1, d: 1}
+      - {sectors: [507], r: 9, s: 1, d: 1}
+      - {sectors: [503], r: 9, s: 1, d: 1}
+      - {sectors: [477], r: 8, s: 1, d: 1}
+      - {sectors: [378], r: 8, s: 1, d: 1}
+      - {sectors: [375], r: 8, s: 1, d: 1}
+      - {sectors: [374], r: 7, s: 1, d: 1}
+      - {sectors: [373], r: 7, s: 1, d: 1}
+      - {sectors: [367], r: 8, s: 1, d: 1}
+      - {sectors: [366], r: 8, s: 1, d: 1}
+      - {sectors: [365], r: 8, s: 1, d: 1}
+      - {sectors: [351], r: 8, s: 1, d: 1}
+      - {sectors: [350], r: 8, s: 1, d: 1}
+      - {sectors: [347], r: 9, s: 1, d: 1}
+      - {sectors: [311], r: 9, s: 1, d: 1}
+      - {sectors: [309], r: 9, s: 1, d: 1}
+      - {sectors: [303], r: 9, s: 1, d: 1}
+      - {sectors: [251], r: 8, s: 1, d: 1}
+      - {sectors: [250], r: 7, s: 1, d: 1}
+      - {sectors: [249], r: 7, s: 1, d: 1}
+      - {sectors: [247], r: 8, s: 1, d: 1}
+      - {sectors: [246], r: 7, s: 1, d: 1}
+      - {sectors: [245], r: 7, s: 1, d: 1}
+      - {sectors: [219], r: 7, s: 1, d: 1}
+    select_integrals:
+      select_mandatory_list:
+        - [integrals]
+    run_initiate: input
+    truncate_sp: 
+      - {l: 7}

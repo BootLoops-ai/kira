@@ -1,0 +1,75 @@
+# Minimal job file example.
+# Note that we recommend to always use the option select_integrals.
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {sectors: [42], r: 5, s: 1, d: 2}
+     - {sectors: [162], r: 5, s: 1, d: 2}
+     - {sectors: [168], r: 5, s: 1, d: 2}
+     - {sectors: [290], r: 5, s: 1, d: 2}
+     - {sectors: [292], r: 5, s: 1, d: 2}
+     - {sectors: [296], r: 5, s: 1, d: 2}
+     - {sectors: [322], r: 5, s: 1, d: 2}
+     - {sectors: [324], r: 5, s: 1, d: 2}
+     - {sectors: [328], r: 5, s: 1, d: 2}
+     - {sectors: [386], r: 5, s: 1, d: 2}
+     - {sectors: [388], r: 5, s: 1, d: 2}
+     - {sectors: [392], r: 5, s: 1, d: 2}
+     - {sectors: [170], r: 6, s: 1, d: 2}
+     - {sectors: [294], r: 6, s: 1, d: 2}
+     - {sectors: [298], r: 6, s: 1, d: 2}
+     - {sectors: [300], r: 6, s: 1, d: 2}
+     - {sectors: [326], r: 6, s: 1, d: 2}
+     - {sectors: [330], r: 6, s: 1, d: 2}
+     - {sectors: [332], r: 6, s: 1, d: 2}
+     - {sectors: [354], r: 6, s: 1, d: 2}
+     - {sectors: [356], r: 6, s: 1, d: 2}
+     - {sectors: [360], r: 6, s: 1, d: 2}
+     - {sectors: [390], r: 6, s: 1, d: 2}
+     - {sectors: [394], r: 6, s: 1, d: 2}
+     - {sectors: [396], r: 6, s: 1, d: 2}
+     - {sectors: [418], r: 6, s: 1, d: 2}
+     - {sectors: [420], r: 6, s: 1, d: 2}
+     - {sectors: [424], r: 6, s: 1, d: 2}
+     - {sectors: [450], r: 6, s: 1, d: 2}
+     - {sectors: [452], r: 6, s: 1, d: 2}
+     - {sectors: [456], r: 6, s: 1, d: 2}
+     - {sectors: [110], r: 7, s: 2, d: 2}
+     - {sectors: [206], r: 7, s: 2, d: 2}
+     - {sectors: [230], r: 7, s: 2, d: 2}
+     - {sectors: [234], r: 7, s: 2, d: 2}
+     - {sectors: [236], r: 7, s: 2, d: 2}
+     - {sectors: [302], r: 7, s: 2, d: 2}
+     - {sectors: [334], r: 7, s: 2, d: 2}
+     - {sectors: [358], r: 7, s: 2, d: 2}
+     - {sectors: [362], r: 7, s: 2, d: 2}
+     - {sectors: [364], r: 7, s: 2, d: 2}
+     - {sectors: [398], r: 7, s: 2, d: 2}
+     - {sectors: [422], r: 7, s: 2, d: 2}
+     - {sectors: [426], r: 7, s: 2, d: 2}
+     - {sectors: [428], r: 7, s: 2, d: 2}
+     - {sectors: [454], r: 7, s: 2, d: 2}
+     - {sectors: [458], r: 7, s: 2, d: 2}
+     - {sectors: [460], r: 7, s: 2, d: 2}
+     - {sectors: [482], r: 7, s: 2, d: 2}
+     - {sectors: [484], r: 7, s: 2, d: 2}
+     - {sectors: [488], r: 7, s: 2, d: 2}
+     - {sectors: [238], r: 8, s: 3, d: 2}
+     - {sectors: [366], r: 8, s: 3, d: 2}
+     - {sectors: [430], r: 8, s: 3, d: 2}
+     - {sectors: [462], r: 8, s: 3, d: 2}
+     - {sectors: [486], r: 8, s: 3, d: 2}
+     - {sectors: [490], r: 8, s: 3, d: 2}
+     - {sectors: [492], r: 8, s: 3, d: 2}
+     - {sectors: [494], r: 8, s: 3, d: 1}
+    select_integrals:
+     select_mandatory_list:
+      - [dpP, mm]
+    run_initiate: true
+    numerical_points: numerics
+# can also specify the number of points for the output files
+#    numerical_points: {file: "numerics", points_per_output_file: 1}
+    extra_relations: input_kira_4D/hbP/SYSTEM_hbP_0000001008.kira
+    truncate_sp:
+      - {l: 1}
+    symbols_2_nums: false

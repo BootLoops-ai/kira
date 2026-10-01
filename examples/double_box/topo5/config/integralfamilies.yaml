@@ -1,0 +1,14 @@
+integralfamilies:
+  - name: "topo5"
+    loop_momenta: [k1, k2]
+    top_level_sectors: [127]
+    propagators:
+      - [ "k1", 0]               #1
+      - [ "k2", 0]               #2
+      - [ "q2-k1", 0]            #3
+      - [ "p1-k2", 0]            #4
+      - [ "q1+k1", "m12"]        #5
+      - [ "q1+k1-k2", "m12"]     #6
+      - [ "-p2+q1+k1-k2", "m22"] #7
+      - [ "k1-p1", 0]            #8
+      - [ "k2-q2-p2", 0]         #9

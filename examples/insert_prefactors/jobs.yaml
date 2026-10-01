@@ -1,0 +1,17 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [doublebox], sectors: [255], r: 9, s: 2} 
+    select_integrals:
+      select_mandatory_list:
+        - [doublebox, scal2]
+    preferred_masters: preferred
+    insert_prefactors: [xints]
+    run_initiate: true
+    run_firefly: true
+    integral_ordering: 2
+    truncate_sp:
+     - {l: 6}
+ - kira2math:
+    target:
+      - [doublebox, scal2]

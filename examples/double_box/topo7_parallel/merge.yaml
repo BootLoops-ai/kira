@@ -1,0 +1,8 @@
+jobs:
+ - merge:
+    files2merge:
+     - ../topo7_parallel2/results/kira.db
+     # No need to list the database [../topo7_parallel/]results/kira.db here.
+     # The database from the working directory (topo7_parallel/results/kira.db)
+     # is automatically selected and all databases listed here will be merged
+     # into it.

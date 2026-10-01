@@ -1,0 +1,23 @@
+#run the job file generate_input.yaml first
+jobs:
+  - reduce_user_defined_system:
+      input_system: {files: "input_kira/topo7", config: true, otf: true}
+#      input_system: {files: "input_kira/topo7", config: false, otf: false} # works as well
+#      input_system: {files: "input_kira/topo7"} # works as well
+#      input_system: "input_kira/topo7" # works as well
+      select_integrals:
+        select_mandatory_recursively:
+          - {sectors: [127], r: 7, s: 2}
+
+      preferred_masters: masters
+#      iterative_reduction: masterwise
+      iterative_reduction: sectorwise
+#
+      run_initiate: true
+      run_triangular: true
+      run_back_substitution: true
+#      run_firefly: true
+
+  - kira2file:
+      target:
+        - {sectors: [127], r: 7, s: 2}

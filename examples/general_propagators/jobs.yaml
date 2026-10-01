@@ -1,0 +1,11 @@
+# Sector b1110 equals 7 in the old sector notation.
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [box], sectors: [b1110], r: 5, s: 2}
+    select_integrals:
+     select_mandatory_recursively:
+      - {topologies: [box], sectors: [b1110], r: 5, s: 2, d: 1}
+ - kira2math:
+    target:
+     - {sectors: [b1110], r: 5, s: 2, d: 1}

@@ -1,0 +1,26 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [topo4], sectors: [127], r: 7, s: 3 } # complicated example
+    select_integrals:
+      select_mandatory_recursively:
+       - {topologies: [topo4], sectors: [127], r: 7, s: 3, d: 0} # complicated example
+#       - {topologies: [topo4], sectors: [127], r: 7, s: 4, d: 0} # Amplitude
+#       - {topologies: [topo4], sectors: [127], r: 8, s: 3, d: 1} # DGL
+    preferred_masters: "basisChange"
+    select_masters_reduction: # note this option sets conditional: false
+     # calculate only the coefficients of master integral 20
+     # (i.e. position 20 in results/topo4/masters, created when run_initiate completed)
+     # For the full reduction, the coefficients of all master integrals must be calculated!
+     # For an example how to do this in parallel on several machines,
+     # see examples/topo7_parallel
+     - [topo4, [20]]
+    run_initiate: true
+    run_triangular: sectorwise
+    run_back_substitution: true
+    # Use algebraic reconstruction
+    algebraic_reconstruction: true
+    integral_ordering: 4
+ - kira2math:
+    target:
+     - {topologies: [topo4], sectors: [127], r: 7, s: 3, d: 0}

@@ -1,0 +1,19 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [b1], sectors: [31], r: 6, s: 2}
+     - {topologies: [b2], sectors: [31], r: 6, s: 2}
+    select_integrals:
+     select_mandatory_list:
+      - [b1, "b1.integrals"]
+      - [b2, "b2.integrals"]
+    integral_ordering: 8
+    run_symmetries: true
+    run_initiate: true
+    run_triangular: true
+    run_back_substitution: true
+ - kira2math:
+    target:
+     - [b1, "b1.integrals"]
+     - [b2, "b2.integrals"]
+    reconstruct_mass: true

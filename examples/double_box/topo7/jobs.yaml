@@ -1,0 +1,16 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {topologies: [topo7], sectors: [127], r: 7, s: 5, d: 0}
+      - {topologies: [topo7], sectors: [78], r: 5, s: 3, d: 1}
+      - {topologies: [topo7x], sectors: [508], r: 7, s: 5, d: 0}
+      - {topologies: [topo7x], sectors: [216], r: 5, s: 3, d: 1}
+    select_integrals:
+      select_mandatory_list:
+        - [seeds7]
+        - [seeds7x]
+    run_initiate: true
+    run_firefly: true
+    truncate_sp: 
+      - {topologies: [topo7], l: 3}
+      - {topologies: [topo7x], l: 3}

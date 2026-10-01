@@ -1,0 +1,11 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {sectors: [127], r: 7, s: 5, d: 0}
+    select_integrals:
+      select_mandatory_list:
+        - [target]
+    run_initiate: true
+    run_firefly: true
+    truncate_sp: 
+      - {l: 2}

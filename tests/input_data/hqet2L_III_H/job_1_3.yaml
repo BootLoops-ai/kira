@@ -1,0 +1,22 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     # integral_ordering=1: require r=8, s=2
+     # integral_ordering=2: require r=8, s=1
+     - {r: 8, s: 1}
+    select_integrals:
+     select_mandatory_recursively:
+      - {r: 8, s: 1, d: 1}
+     select_mandatory_list:
+      - ["III", "select_III.dat"]
+      - ["IX",  "select_IX.dat"]
+    run_symmetries: true
+    run_initiate: true
+    run_triangular: true
+    run_back_substitution: true
+    integral_ordering: 2
+ - kira2math:
+    target:
+     - ["III", "select_III.dat"]
+     - ["IX",  "select_IX.dat"]
+    reconstruct_mass: true

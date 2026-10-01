@@ -1,0 +1,8 @@
+jobs:
+  - reduce_sectors:
+      reduce:
+       - {sectors: [7], r: 5, s: 4, d: 2}
+      select_integrals:
+        select_mandatory_recursively:
+         - {sectors: [7], r: 5, s: 4, d: 2}
+      preferred_masters: "basisChange"

@@ -1,0 +1,3 @@
+
+subdir('pyred')
+subdir('kira')

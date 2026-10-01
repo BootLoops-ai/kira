@@ -1,0 +1,23 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {topologies: [topo4], sectors: [127], r: 7, s: 2 } # simple example
+     - {topologies: [topo4], sectors: [127], r: 8, s: 1 } # simple example
+#     - {topologies: [topo4], sectors: [127], r: 7, s: 4 } # Amplitude
+#     - {topologies: [topo4], sectors: [127], r: 8, s: 3 } # DGL
+    select_integrals:
+      select_mandatory_recursively:
+       - {topologies: [topo4], sectors: [127], r: 7, s: 2, d: 0}
+       - {topologies: [topo4], sectors: [127], r: 8, s: 1, d: 1}
+#       - {topologies: [topo4], sectors: [127], r: 7, s: 4, d: 0} # Amplitude
+#       - {topologies: [topo4], sectors: [127], r: 8, s: 3, d: 1} # DGL
+#    preferred_masters: "basisChange"
+    run_initiate: true
+    run_triangular: true
+    run_back_substitution: true
+ - kira2math:
+    target:
+     - {topologies: [topo4], sectors: [127], r: 7, s: 2, d: 0}
+     - {topologies: [topo4], sectors: [127], r: 8, s: 1, d: 1}
+#     - {topologies: [topo4], sectors: [127], r: 7, s: 4, d: 0} # Amplitude
+#     - {topologies: [topo4], sectors: [127], r: 8, s: 3, d: 1} # DGL

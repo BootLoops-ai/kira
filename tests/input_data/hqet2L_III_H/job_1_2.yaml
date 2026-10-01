@@ -1,0 +1,11 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     # integral_ordering=1: require r=8, s=2
+     # integral_ordering=2: require r=8, s=1
+     - {r: 8, s: 1}
+    select_integrals:
+     select_mandatory_recursively:
+      - {r: 8, s: 1, d: 1}
+    run_initiate: true
+    integral_ordering: 2

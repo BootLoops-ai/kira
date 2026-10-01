@@ -1,0 +1,11 @@
+[wrap-file]
+
+directory = flint-2.8.4
+
+source_url = https://flintlib.org/download/flint-2.8.4.tar.gz
+source_filename = flint-2.8.4.tar.gz
+source_hash = 61df92ea8c8e9dc692d46c71d7f50aaa09a33d4ba08d02a1784730a445e5e4be
+
+patch_url = https://kira.hepforge.org/downloads?f=mesonpatches/mesonpatch-flint-2.8.4.tar.gz
+patch_filename = mesonpatch-flint-2.8.4.tar.gz
+patch_hash = 7fdfead7d94f60bf4093ee4e16fa499178be03054895ccf1b1430adc472f714f

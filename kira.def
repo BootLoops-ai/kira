@@ -1,0 +1,59 @@
+Bootstrap: docker
+From: ubuntu:24.04
+Stage: build
+
+%arguments
+    VERSION=3.1
+
+%setup
+
+%files
+
+%post
+    apt-get update
+    apt-get install -y wget git g++ meson pkgconf libginac11 libginac-dev zlib1g zlib1g-dev libyaml-cpp0.8 libyaml-cpp-dev libgmp10 libgmp-dev libmpfr6 libmpfr-dev libjemalloc2 libjemalloc-dev
+    wget https://home.bway.net/lewis/fermat64/Ferl7.tar.gz
+    tar -xzf Ferl7.tar.gz
+    mv Ferl7/BACKWARD/ Ferl7/fer64 /usr/local/bin/
+    git clone -b {{ VERSION }} --depth 1 https://gitlab.com/kira-pyred/kira.git
+    cd kira
+    meson setup -Djemalloc=true build
+    cd build
+    ninja
+    ninja test
+    ninja install
+    cd ..
+    meson setup -Djemalloc=true -Dweight_width=128 build128
+    cd build128
+    ninja
+    ninja test
+    ninja install
+    cd ../..
+    rm -rf kira Ferl7.tar.gz Ferl7
+    apt-get remove -y wget git g++ meson pkgconf libginac-dev zlib1g-dev libyaml-cpp-dev libgmp-dev libmpfr-dev libjemalloc-dev
+    apt-get autoremove -y
+
+%environment
+    PATH="/usr/local/bin:$PATH"
+    LD_LIBRARY_PATH="/usr/local/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+
+%test
+
+%startscript
+
+%runscript
+    kira "$@"
+
+%labels
+    Name Kira -- A Feynman Integral Reduction Program
+    Version {{ VERSION }}
+    Authors Fabian Lange, Johann Usovitsch, Zihao Wu
+    Email fabian.lange@physik.uzh.ch, jusovitsch@googlemail.com, wuzihao@mail.ustc.edu.cn
+
+%help
+    This is the container providing Kira {{ VERSION }} available from
+    https://gitlab.com/kira-pyred/kira. It provides the two executables `kira`
+    and `kira128`, the latter built with support for 128-bit weights for a
+    small performance penalty. Run `kira --help` to print usage instructions
+    or visit the GitLab page for more detailed instructions.
+

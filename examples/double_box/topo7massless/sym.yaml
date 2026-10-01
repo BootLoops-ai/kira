@@ -1,0 +1,8 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - { r: 7, s: 2}
+    select_integrals:
+      select_mandatory_recursively:
+       - { r: 7, s: 2, d: 1}
+    run_symmetries: true

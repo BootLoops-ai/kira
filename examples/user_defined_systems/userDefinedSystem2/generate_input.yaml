@@ -1,0 +1,6 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+     - {r: 7, s: 2} 
+    weight_notation: false
+    generate_input: { level: 0}

@@ -1,0 +1,10 @@
+jobs:
+  - kira2file:
+      target:
+        - {sectors: [127], r: 7, s: 2}
+  - kira2math:
+      target:
+        - {sectors: [127], r: 7, s: 2}
+  - kira2form:
+      target:
+        - {sectors: [127], r: 7, s: 2}

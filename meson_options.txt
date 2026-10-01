@@ -1,0 +1,60 @@
+
+# Set default_library=static to override FireFly's default_library=both.
+# If the shared library is built, it will be preferred for linking to Kira.
+
+# The CUTSOM option for user-defined modular arithmetic in FireFly
+# is not supported.
+
+# Useful build-in Meson options for subprojects.
+# See https://mesonbuild.com/Subprojects.html for details.
+
+# --wrap-mode=nodownload: do not download subprojects,
+#   but build them if already available (and not found on the system).
+
+# --wrap-mode=nofallback: do not build subprojects,
+#   even if the libraries are not found on the system.
+
+# --wrap-mode=forcefallback: build subprojects even if the libraries
+#   can be found on the system.
+
+# --force-fallback-for=list,of,dependencies
+#   Takes precedence over --wrap-mode=nofallback.
+
+# For other built-in options, see https://mesonbuild.com/Builtin-options.html
+
+# Subprojects are not automatically updated. To update, run
+# `meson subprojects update`.
+
+option('firefly', type: 'boolean', value: true,
+       description: 'Build Kira with FireFly support.')
+
+option('flint', type: 'boolean', value: true,
+       description: 'If FireFly is built as a subproject, forward this option.')
+
+option('mpi', type: 'boolean', value: false,
+       description: 'If FireFly is built as a subproject, forward this option.')
+
+option('custom-mpi', type: 'string', value: 'false',
+       description: 'If FireFly is built as a subproject, forward this option.')
+
+option('jemalloc', type: 'boolean', value: false,
+       description: 'Link executables with jemalloc.')
+
+option('kyotocabinet', type: 'boolean', value: false,
+       description: 'Build pyRed with Kyoto Cabinet database support.')
+
+option('pyredtests', type: 'boolean', value: false,
+       description: 'Compile pyRed test executables.')
+
+option('pyred_ncoeffclasses', type: 'integer', value: 1,
+       description: 'The number of pyRed coefficient classes to instantiate.')
+
+option('weight_width', type: 'combo', choices: ['64', '128'], value: '64',
+       description: 'The number of bits available to store integral weights.')
+
+option('static', type : 'boolean', value : false, yield : true,
+       description : 'Build a static executable.')
+
+option('test-level', type: 'combo', choices: ['sym', 'masters', 'full'],
+       value: 'full', description:
+       'Test level: symmetries only, masters from pyRed, full reduction.')

@@ -1,0 +1,10 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {topologies: [doublePentagon], sectors: [255], r: 8, s: 5, d: 0}
+    select_integrals:
+      select_mandatory_list:
+        - [integrals-8.5.0]
+    run_initiate: input
+    truncate_sp: 
+      - {l: 4, sectors: [167,103,199,71]}

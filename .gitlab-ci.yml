@@ -1,0 +1,71 @@
+image: gcc
+
+stages:
+  - build
+#  - build-128
+  - test
+#  - test-128
+
+build:
+  stage: build
+  before_script:
+  - DEBIAN_FRONTEND=noninteractive apt update
+  - DEBIAN_FRONTEND=noninteractive apt -y install meson libginac-dev zlib1g-dev libyaml-cpp-dev libflint-dev
+  script:
+    - meson build
+    - cd build
+    - ninja -v
+  artifacts:
+    paths:
+      - build
+      - subprojects/firefly
+
+#build-128:
+#  stage: build-128
+#  before_script:
+#  - DEBIAN_FRONTEND=noninteractive apt update
+#  - DEBIAN_FRONTEND=noninteractive apt -y install meson libginac-dev zlib1g-dev libyaml-cpp-dev libflint-dev
+#  script:
+#    # TODO try to avoid building FireFly again
+#    - meson -Dweight_width=128 build-128
+#    - cd build-128
+#    - ninja -v
+#  artifacts:
+#    paths:
+#      - build-128
+
+test:
+  stage: test
+  before_script:
+  - DEBIAN_FRONTEND=noninteractive apt update
+  - DEBIAN_FRONTEND=noninteractive apt -y install meson libginac-dev zlib1g-dev libyaml-cpp-dev libflint-dev
+  - wget https://home.bway.net/lewis/fermat64/ferl6.tar.gz
+  - tar -xzf ferl6.tar.gz
+  - export FERMATPATH="$(pwd)/ferl6/fer64"
+  # make sure that the same version of libstdc++.so is used at compile time and at run time
+  - export LD_LIBRARY_PATH="/usr/local/lib64:$LD_LIBRARY_PATH"
+  script:
+    - cd build
+    # TODO: get rid of --no-rebuild
+    - meson test -v --no-rebuild --suite kira
+  artifacts:
+    paths:
+      - build/meson-logs/
+
+#test-128:
+#  stage: test-128
+#  before_script:
+#  - DEBIAN_FRONTEND=noninteractive apt update
+#  - DEBIAN_FRONTEND=noninteractive apt -y install meson libginac-dev zlib1g-dev libyaml-cpp-dev libflint-dev
+#  - wget https://home.bway.net/lewis/fermat64/ferl6.tar.gz
+#  - tar -xzf ferl6.tar.gz
+#  - export FERMATPATH="$(pwd)/ferl6/fer64"
+#  # make sure that the same version of libstdc++.so is used at compile time and at run time
+#  - export LD_LIBRARY_PATH="/usr/local/lib64:$LD_LIBRARY_PATH"
+#  script:
+#    - cd build-128
+#    # TODO: get rid of --no-rebuild
+#    - meson test -v --no-rebuild --suite kira
+#  artifacts:
+#    paths:
+#      - build-128/meson-logs/

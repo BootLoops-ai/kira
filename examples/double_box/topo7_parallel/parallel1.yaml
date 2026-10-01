@@ -1,0 +1,20 @@
+jobs:
+ - reduce_sectors:
+    # the options "reduce" and "select_integrals" are required
+    # and must agree exactly with the ones used in prepare.yaml
+    reduce:
+     - {topologies: [topo7], r: 7, s: 2}
+    select_integrals:
+     select_mandatory_recursively:
+      - {topologies: [topo7], r: 7, s: 2, d: 0}
+    # select master integrals for which the coefficients should be calculated.
+    # Here: odd numbers (refer to the position in results/topo7/masters).
+    # For demonstration purposes we put these numbers here from the beginning.
+    # Usually the master integrals are only known when prepare.yaml finished.
+    select_masters_reduction:
+     - [topo7, [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29]]
+    # run_initiate and run_triangular already done by prepare.yaml
+    run_initiate: true
+    run_firefly: true
+    #   run_back_substitution: true
+    conditional: true

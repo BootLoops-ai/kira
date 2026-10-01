@@ -1,0 +1,18 @@
+jobs:
+ - reduce_sectors:
+    reduce:
+      - {topologies: [hex], sectors: [511], r: 9, s: 5, d: 0}
+      - {topologies: [hex], sectors: [103], r: 8, s: 2, d: 1}
+      - {topologies: [hex], sectors: [222], r: 8, s: 3, d: 1}
+      - {topologies: [hex], sectors: [215], r: 8, s: 3, d: 1}
+      - {topologies: [hex], sectors: [214], r: 8, s: 2, d: 1}
+      - {topologies: [hex], sectors: [220], r: 8, s: 2, d: 1}
+      - {topologies: [hex], sectors: [206], r: 8, s: 2, d: 1}
+      - {topologies: [hex], sectors: [218], r: 8, s: 2, d: 1}
+      - {topologies: [hex], sectors: [211], r: 8, s: 2, d: 1}
+    select_integrals:
+      select_mandatory_list:
+        - [integrals-9.5.0]
+    run_initiate: input
+    truncate_sp:
+      - {l: 5, sectors: [211, 218, 206, 213, 220, 214, 215, 222, 115, 122, 110, 173, 231, 167], sectors2: [103]}
